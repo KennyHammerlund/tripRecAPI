@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # apollo-tutorial-kit
 
 Starting point for the Apollo GraphQL Server tutorial.
@@ -34,3 +35,18 @@ and hit the play button (cmd-return), then you should get this on the right side
   }
 }
 ```
+=======
+<html>
+<body>
+<h3>tripReq Server Repo</h3>
+<p>This is where the server side code of tripRec will reside. </p>
+<h4>Things to be implemented</h4>
+<ul>
+	<li>AWS Hositing</li>
+	<li>Node.js</li>
+	<li>Meteor</li>
+	<li>Apollo GraphQL</li>
+</li>
+</body>
+</html>
+>>>>>>> 8772db5c4a70bb77a1ac01ee0b729c85b903bc2e
