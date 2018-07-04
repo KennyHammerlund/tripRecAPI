@@ -1,6 +1,10 @@
 {
   "name": "triprecgraphqlserver",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "engines": {
+    "node": "8.11.1"
+  },
+  "private": true,
   "description": "GraphQL server for the tripRec App",
   "main": "server.js",
   "dependencies": {
@@ -10,11 +14,13 @@
     "express": "^4.16.2",
     "graphql": "^0.11.7",
     "graphql-tools": "^2.13.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.10",
     "mongoose": "^4.13.2",
+    "mysql2": "^1.5.3",
     "node-fetch": "^1.7.3",
-    "sequelize": "^4.28.2",
-    "sqlite": "^2.9.0"
+    "sequelize": "^4.38.0",
+    "sequelize-import": "^1.2.1",
+    "sqlite": "^2.9.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

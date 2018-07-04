@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # apollo-tutorial-kit
 
 Starting point for the Apollo GraphQL Server tutorial.
@@ -35,7 +34,7 @@ and hit the play button (cmd-return), then you should get this on the right side
   }
 }
 ```
-=======
+
 <html>
 <body>
 <h3>tripReq Server Repo</h3>
@@ -49,4 +48,3 @@ and hit the play button (cmd-return), then you should get this on the right side
 </li>
 </body>
 </html>
->>>>>>> 8772db5c4a70bb77a1ac01ee0b729c85b903bc2e
