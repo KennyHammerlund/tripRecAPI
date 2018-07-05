@@ -1,9 +1,12 @@
+import { models } from "../../data/model";
 export default {
   Query: {
-    user: (obj, args) => tblUser.findAll()
-  },
-  User: {
-    firstName: () => "Kenny",
-    lastName: () => "Testing"
+    user: (obj, { id }) => {
+      console.log(`ID: ${id}`);
+      console.log(obj);
+      return models.user.findOne({
+        where: { id: id }
+      });
+    }
   }
 };

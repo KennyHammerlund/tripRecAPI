@@ -4,7 +4,7 @@ const config = {
   database: "TripRec",
   options: {
     connectionTimeout: 0,
-    host: "10.10.72.13",
+    host: "www.midnighthtml.com",
     dialect: "mysql",
     port: "3306",
     pool: {

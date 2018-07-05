@@ -12,32 +12,32 @@ module.exports = (sequelize, DataTypes) => {
     firstName: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     lastName: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     email: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     password: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     displayName: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     imageId: {
       type: Sequelize.INTEGER,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     }
   });
 };

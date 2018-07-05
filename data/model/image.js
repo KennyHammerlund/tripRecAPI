@@ -12,52 +12,51 @@ module.exports = (sequelize, DataTypes) => {
     title: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     description: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     date: {
       type: Sequelize.DATE,
-      allowNull: true,
-      defaultValue: "(null)"
+      allowNull: true
     },
     userID: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     link: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     locationID: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     tripID: {
       type: Sequelize.INTEGER,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     tripLocationID: {
       type: Sequelize.INTEGER,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: null
     },
     flagged: {
       type: Sequelize.BOOLEAN,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: false
     },
     isPrimary: {
       type: Sequelize.BOOLEAN,
       allowNull: true,
-      defaultValue: "(null)"
+      defaultValue: false
     }
   });
 };
