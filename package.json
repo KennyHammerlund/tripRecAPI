@@ -37,7 +37,8 @@
     ]
   },
   "scripts": {
-    "start": "nodemon ./server.js --exec babel-node"
+    "start": "nodemon ./server.js --exec babel-node",
+    "heroku-prebuild": "npm install"
   },
   "repository": {
     "type": "git",
