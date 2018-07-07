@@ -1,7 +1,7 @@
 export const userTrip = `type UserTrip {
   id: Int
   comments: String
-  tripId: Int
+  trip: Trip
   user: User
   images: [Image]
 }`;
