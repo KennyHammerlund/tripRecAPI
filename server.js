@@ -1,8 +1,10 @@
 import express from "express";
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 import bodyParser from "body-parser";
-import Cors from "cors";
+import cors from "cors";
 import { express as voyager } from "graphql-voyager/middleware";
+import path from "path";
+import compress from "compression";
 
 import schema from "./data/schema/schema";
 import { ENGINE_METHOD_NONE } from "constants";
@@ -11,16 +13,25 @@ const GRAPHQL_PORT = process.env.PORT || 3002;
 
 const graphQLServer = express();
 
+// graphQLServer.use(compress());
+
+graphQLServer.use(cors());
+graphQLServer.use(bodyParser.json());
+
+graphQLServer.use(express.static(path.join(__dirname, "/")));
+graphQLServer.use(bodyParser.urlencoded({ extended: true }));
+
+// graphQLServer.use("/", bodyParser.json(), graphqlExpress({ schema }));
 graphQLServer.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
+
 graphQLServer.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 graphQLServer.use("/voyager", voyager({ endpointUrl: "/graphql" }));
-
-graphQLServer.use(Cors());
 
 db.sequelize.sync().then(() => {
   graphQLServer.listen(GRAPHQL_PORT, () => {
     console.log(
-      `GraphiQL is now running on http://localhost:${GRAPHQL_PORT}/graphiql`
+      `\n\n\n******************** TripRec API ******************\nServices Running:\n  GraphiQL: http://localhost:${GRAPHQL_PORT}/graphiql`
     );
+    console.log(`  Voyager: http://localhost:${GRAPHQL_PORT}/voyager\n\n`);
   });
 });
