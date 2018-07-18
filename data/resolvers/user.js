@@ -2,10 +2,28 @@ import { models } from "../../data/model";
 export default {
   Query: {
     user: (obj, { id }) => {
-      console.log(`ID: ${id}`);
-      console.log(obj);
       return models.user.findOne({
-        where: { id: id }
+        where: { userId: id }
+      });
+    },
+    userTrip: (obj, { id }) => {
+      return models.userTrip.findOne({
+        where: { userTripId: id }
+      });
+    },
+    location: (obj, { id }) => {
+      return models.location.findOne({
+        where: { locationId: id }
+      });
+    },
+    image: (obj, { id }) => {
+      return models.image.findOne({
+        where: { imageId: id }
+      });
+    },
+    trip: (obj, { id }) => {
+      return models.trip.findOne({
+        where: { tripId: id }
       });
     }
   }

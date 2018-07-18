@@ -117,21 +117,21 @@ const tblImageModel = db.define("tblImage", {
 tblUserModel.hasMany(tblImageModel);
 tblImageModel.belongsTo(tblUserModel);
 
-//seed information into the database
-// casual.seed(123);
-// db.sync({ force: true }).then(() => {
-//   _.times(10, () => {
-//     return tblUserModel.create({
-//       id: casual.integer,
-//       firstName: casual.first_name,
-//       lastName: casual.last_name,
-//       email: casual.email,
-//       password: casual.word,
-//       displayName: casual.full_name,
-//       imageId: casual.integer
-//     });
-//   });
-// });
+// seed information into the database
+casual.seed(234);
+db.sync({ force: true }).then(() => {
+  _.times(10, () => {
+    return tblUserModel.create({
+      id: casual.integer,
+      firstName: casual.first_name,
+      lastName: casual.last_name,
+      email: casual.email,
+      password: casual.word,
+      displayName: casual.full_name,
+      imageId: casual.integer
+    });
+  });
+});
 
 const tblImage = db.models.tblImage;
 const tblUser = db.models.tblUser;

@@ -2,61 +2,82 @@ import Sequelize from "sequelize";
 
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("tblImage", {
-    id: {
+    ImageID: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      field: "id"
+      field: "ImageID"
     },
     title: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: null
+      field: "Title"
     },
     description: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: null
+      field: "Description"
     },
     date: {
       type: Sequelize.DATE,
-      allowNull: true
-    },
-    userID: {
-      type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: null
+      field: "Date",
+      defaultValue: Sequelize.NOW
+    },
+    userId: {
+      type: Sequelize.INTEGER,
+      field: "UserID",
+      references: {
+        model: "tblUsers",
+        key: "UserID"
+      }
     },
     link: {
       type: Sequelize.STRING,
-      allowNull: true,
-      defaultValue: null
+      allowNull: false,
+      field: "Link"
     },
-    locationID: {
-      type: Sequelize.STRING,
+    locationId: {
+      type: Sequelize.INTEGER,
+      field: "LocationID",
       allowNull: true,
-      defaultValue: null
+      references: {
+        model: "tblLocations",
+        key: "LocationID"
+      }
     },
-    tripID: {
+    userTripId: {
       type: Sequelize.INTEGER,
       allowNull: true,
-      defaultValue: null
+      references: {
+        model: "tblUserTrips",
+        key: "UserTripID"
+      },
+      field: "UserTripID"
     },
+
     tripLocationID: {
       type: Sequelize.INTEGER,
       allowNull: true,
-      defaultValue: null
+      references: {
+        model: "tblTripLocations",
+        key: "TripLocationID"
+      },
+      field: "TripLocationID"
     },
+
     flagged: {
       type: Sequelize.BOOLEAN,
       allowNull: true,
-      defaultValue: false
+      defaultValue: false,
+      field: "Flagged"
     },
     isPrimary: {
       type: Sequelize.BOOLEAN,
       allowNull: true,
-      defaultValue: false
+      defaultValue: false,
+      field: "IsPrimary"
     }
   });
 };

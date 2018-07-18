@@ -2,7 +2,7 @@
   "name": "triprecgraphqlserver",
   "version": "0.0.1",
   "engines": {
-    "node": "8.11.1"
+    "node": "8.11.3"
   },
   "private": true,
   "description": "GraphQL server for the tripRec App",
@@ -15,17 +15,20 @@
     "casual": "^1.5.17",
     "compression": "^1.7.3",
     "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
     "express": "^4.16.2",
     "graphql": "^0.11.7",
     "graphql-tools": "^2.13.0",
     "graphql-voyager": "^1.0.0-rc.19",
     "lodash": "^4.17.10",
+    "moment": "^2.22.2",
     "mongoose": "^4.13.2",
     "mysql2": "^1.5.3",
     "node-fetch": "^1.7.3",
     "nodemon": "^1.12.1",
     "sequelize": "^4.38.0",
     "sequelize-import": "^1.2.1",
+    "sql-formatter": "^2.3.1",
     "sqlite": "^2.9.2"
   },
   "devDependencies": {
@@ -41,7 +44,8 @@
   },
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node",
-    "heroku-prebuild": "npm install"
+    "heroku-prebuild": "npm install",
+    "dev": "yarn && cross-env APP_ENV=localdev nodemon ./server.js --exec babel-node"
   },
   "repository": {
     "type": "git",

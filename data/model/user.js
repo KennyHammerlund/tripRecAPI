@@ -2,42 +2,42 @@ import Sequelize from "sequelize";
 
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("tblUser", {
-    id: {
+    userId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      field: "id"
+      field: "UserID"
     },
     firstName: {
       type: Sequelize.STRING,
-      allowNull: true,
-      defaultValue: null
+      allowNull: false,
+      field: "FirstName"
     },
     lastName: {
       type: Sequelize.STRING,
-      allowNull: true,
-      defaultValue: null
+      allowNull: false,
+      field: "LastName"
     },
     email: {
       type: Sequelize.STRING,
-      allowNull: true,
-      defaultValue: null
+      allowNull: false,
+      field: "Email"
     },
     password: {
       type: Sequelize.STRING,
-      allowNull: true,
-      defaultValue: null
+      allowNull: false,
+      field: "Password"
     },
     displayName: {
       type: Sequelize.STRING,
       allowNull: true,
-      defaultValue: null
+      field: "DisplayName"
     },
     imageId: {
       type: Sequelize.INTEGER,
       allowNull: true,
-      defaultValue: null
+      field: "ImageID"
     }
   });
 };

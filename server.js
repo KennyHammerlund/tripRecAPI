@@ -9,6 +9,8 @@ import compress from "compression";
 import schema from "./data/schema/schema";
 import { ENGINE_METHOD_NONE } from "constants";
 import { db } from "./data/model";
+import populate from "./static/populate";
+
 const GRAPHQL_PORT = process.env.PORT || 3002;
 
 const graphQLServer = express();
@@ -27,11 +29,14 @@ graphQLServer.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 graphQLServer.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 graphQLServer.use("/voyager", voyager({ endpointUrl: "/graphql" }));
 
-db.sequelize.sync().then(() => {
-  graphQLServer.listen(GRAPHQL_PORT, () => {
-    console.log(
-      `\n\n\n******************** TripRec API ******************\nServices Running:\n  GraphiQL: http://localhost:${GRAPHQL_PORT}/graphiql`
-    );
-    console.log(`  Voyager: http://localhost:${GRAPHQL_PORT}/voyager\n\n`);
-  });
+//***USE THIS TO CREATE MOCK DATA ****/
+// populate(db);
+
+// db.sequelize.sync().then(() => {
+graphQLServer.listen(GRAPHQL_PORT, () => {
+  console.log(
+    `\n\n\n******************** TripRec API ******************\nServices Running:\n  GraphiQL: http://localhost:${GRAPHQL_PORT}/graphiql`
+  );
+  console.log(`  Voyager: http://localhost:${GRAPHQL_PORT}/voyager\n\n`);
 });
+// });
