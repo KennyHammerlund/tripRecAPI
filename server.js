@@ -10,6 +10,7 @@ import schema from "./data/schema/schema";
 import { ENGINE_METHOD_NONE } from "constants";
 import { db } from "./data/model";
 import populate from "./static/populate";
+import models from "./data/model/index";
 
 const GRAPHQL_PORT = process.env.PORT || 3002;
 

@@ -15,6 +15,25 @@ var models = require("sequelize-import")(__dirname, sequelize, {
   exclude: ["index.js"]
 });
 
+//**DEFINE SEQUELIZE RELATIONSHIPS HERE
+//
+models.trip.hasMany(models.userTrip, {
+  as: "userTrips",
+  foreignKey: "userTripId"
+});
+models.userTrip.belongsTo(models.trip, {
+  as: "userTrip",
+  foreignKey: "userTripId"
+});
+models.location.hasMany(models.tripLocation, {
+  as: "tripLocations",
+  foreignKey: "locationId"
+});
+models.tripLocation.belongsTo(models.location, {
+  as: "tripLocation",
+  foreignKey: "locationId"
+});
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

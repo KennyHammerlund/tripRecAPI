@@ -1,7 +1,8 @@
 import Sequelize from "sequelize";
+import userTrip from "./userTrip";
 
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("tblTrip", {
+  const model = sequelize.define("tblTrip", {
     tripId: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -29,4 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+  return model;
 };

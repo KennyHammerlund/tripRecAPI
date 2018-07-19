@@ -2,7 +2,7 @@ import Sequelize from "sequelize";
 
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("tblImage", {
-    ImageID: {
+    imageId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,

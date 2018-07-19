@@ -1,6 +1,8 @@
 export const trip = `type Trip {
   id: Int
-  name: String
-  stops: [Location]
+  title: String
   description: String
+  stops: [Location]
+  comments: String
+  date: String
 }`;
