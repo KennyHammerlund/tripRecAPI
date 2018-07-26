@@ -9,8 +9,12 @@ export default {
   },
   Image: {
     location: (obj, { id }) => {
-      return models.location.findOne({
-        where: { locationId: obj.locationId }
+      return models.tripLocation.findOne({
+        where: { tripLocationId: obj.tripLocationId },
+        include: {
+          model: models.location,
+          as: "tripLocation"
+        }
       });
     }
   },
@@ -26,10 +30,10 @@ export default {
     }
   },
   Location: {
-    id: (obj, args) => obj.locationId,
+    id: (obj, args) => obj.tripLocationId,
     name: (obj, args) => obj.tripLocation.name,
-    lat: (obj, args) => obj.tripLocation.lat,
-    long: (obj, args) => obj.tripLocation.long,
+    lat: (obj, args) => obj.lat,
+    long: (obj, args) => obj.long,
     stockImage: (obj, args) => {
       return models.image.findOne({
         where: {
