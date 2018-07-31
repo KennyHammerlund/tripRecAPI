@@ -5,4 +5,5 @@ export const query = `type Query {
   image(id: Int!): Image
   user(id: Int): User
   allTrips(id:Int, userID: Int): [Trip]
+  viewer: User
 }`;
