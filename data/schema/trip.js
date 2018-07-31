@@ -5,4 +5,5 @@ export const trip = `type Trip {
   stops: [Location]
   comments: String
   date: String
+  userTrips: [UserTrip]
 }`;

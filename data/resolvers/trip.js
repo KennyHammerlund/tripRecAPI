@@ -9,11 +9,22 @@ export default {
           as: "userTrip"
         }
       });
+    }, 
+    allTrips: (obj, {id, userID }) =>{
+      let whereQuery = id ? {
+       where:{
+        tripId:id
+            }      } : {};
+
+      return models.trip.findAll(
+        whereQuery   
+      );
     }
   },
   Trip: {
-    id: (obj, args) => obj.userTripId,
-    title: (obj, args) => obj.userTrip.title,
+    id: (obj, args) => obj.tripId,
+    title: (obj, args) => obj.title ,
     description: (obj, args) => obj.userTrip.description
-  }
+  },
+
 };
