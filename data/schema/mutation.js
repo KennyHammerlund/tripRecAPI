@@ -1,6 +1,6 @@
 export const mutation = `type Mutation {
 
-  Signup(email: String!, password: String!, name: String!): Login
-  Login(email: String!, password: String!): Login
+  Signup(email: String!, password: String!, firstName: String!, lastName: String!): String
+  Login(email: String!, password: String!): String
   
  }`;
