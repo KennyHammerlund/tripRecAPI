@@ -17,8 +17,10 @@ export default {
       }
 
       return jsonwebtoken.sign({
-        id: "test",
-        email: "email"
+        id: user.userId,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName
       }, 'tripRecRocks', {expiresIn: '1y'})
     },
 
