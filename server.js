@@ -37,6 +37,13 @@ graphQLServer.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 graphQLServer.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 graphQLServer.use("/voyager", voyager({ endpointUrl: "/graphql" }));
 
+graphQLServer.use('/api', graphiqlExpress(req => ({
+  schema,
+  context: {
+    user: req.user
+  }
+})))
+
 //***USE THIS TO CREATE MOCK DATA ****/
 // populate(db);
 

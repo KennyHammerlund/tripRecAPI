@@ -8,7 +8,13 @@ export default {
     }
   },
   User: {
-    id: (obj, args) => obj.userId,
+    id: (obj, args, ctx) => {
+      console.log("context");
+      console.log(ctx);
+    return obj.userId;},
+    displayName: (obj, args, ctx) =>{
+      return JSON.stringify(ctx);
+    },
     trips: ({ userId }, args) => {
       return models.userTrip.findAll({
         include: {
