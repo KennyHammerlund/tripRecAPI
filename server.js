@@ -5,24 +5,31 @@ import cors from "cors";
 import { express as voyager } from "graphql-voyager/middleware";
 import path from "path";
 import compress from "compression";
+import jwt from 'express-jwt';
 
 import schema from "./data/schema/schema";
 import { ENGINE_METHOD_NONE } from "constants";
 import { db } from "./data/model";
 import populate from "./static/populate";
 import models from "./data/model/index";
-
 const GRAPHQL_PORT = process.env.PORT || 3002;
 
 const graphQLServer = express();
+
+  // authentication middleware
+  const authMiddleware = jwt({
+    secret: 'tripRecRocks'
+  });
 
 // graphQLServer.use(compress());
 
 graphQLServer.use(cors());
 graphQLServer.use(bodyParser.json());
+graphQLServer.use(authMiddleware);
 
 graphQLServer.use(express.static(path.join(__dirname, "/")));
 graphQLServer.use(bodyParser.urlencoded({ extended: true }));
+
 
 // graphQLServer.use("/", bodyParser.json(), graphqlExpress({ schema }));
 graphQLServer.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
