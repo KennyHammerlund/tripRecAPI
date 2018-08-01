@@ -18,7 +18,8 @@ const graphQLServer = express();
 
   // authentication middleware
   const authMiddleware = jwt({
-    secret: 'tripRecRocks'
+    secret: 'tripRecRocks',
+    credentialsRequired: false
   });
 
 // graphQLServer.use(compress());
