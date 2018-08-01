@@ -25,7 +25,7 @@ const graphQLServer = express();
 
 graphQLServer.use(cors());
 graphQLServer.use(bodyParser.json());
-graphQLServer.use(authMiddleware);
+// graphQLServer.use(authMiddleware);
 
 graphQLServer.use(express.static(path.join(__dirname, "/")));
 graphQLServer.use(bodyParser.urlencoded({ extended: true }));
