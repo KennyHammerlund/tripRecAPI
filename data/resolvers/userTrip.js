@@ -14,6 +14,7 @@ export default {
       models.trip.findOne({
         where: { tripId: obj.tripId }
       }),
-    date: (obj, args) => moment(obj.date).format()
+    date: (obj, args) => moment(obj.date).format(),
+    comments: (obj, args) => obj.comment
   }
 };

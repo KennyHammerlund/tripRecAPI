@@ -34,16 +34,20 @@ export default {
         where: { tripId: tripId }
       });
       return trips.length === 0 ? null : trips;
+    },
+    stops: ({ tripId }, args) => {
+      return models.userTrip.findAll({
+        where: { tripId: tripId },
+        include: {
+          model: models.tripLocation,
+          as: "userTripLocation",
+          required: true,
+          include: {
+            model: models.location,
+            as: "tripLocation"
+          }
+        }
+      });
     }
-    // stops: ({ tripId }, args) => {
-    //   return models.tripLocation.findAll({
-    //     where: { tripId: tripId },
-    //     required: true,
-    //     include: {
-    //       model: models.location,
-    //       as: "tripLocation"
-    //     }
-    //   });
-    // }
   }
 };

@@ -33,6 +33,10 @@ models.tripLocation.belongsTo(models.location, {
   as: "tripLocation",
   foreignKey: "locationId"
 });
+models.userTrip.hasMany(models.tripLocation, {
+  as: "userTripLocation",
+  foreignKey: "userTripId"
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

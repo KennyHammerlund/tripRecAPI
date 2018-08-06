@@ -10,7 +10,7 @@ import { userTrip } from "./userTrip";
 import { mutation } from "./mutation";
 import { Login } from "./login";
 import { tripLocation } from "./tripLocation";
-
+import { stop } from "./stop";
 export default [
   query,
   image,
@@ -20,5 +20,6 @@ export default [
   userTrip,
   mutation,
   Login,
-  tripLocation
+  tripLocation,
+  stop
 ];
