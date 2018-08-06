@@ -6,15 +6,15 @@ export default {
       const test = await models.image.findOne({
         where: { imageId: id }
       });
-      console.log(test);
       return test;
     }
   },
   User: {
-    images: (obj, { id }) => {
-      return models.image.findAll({
+    images: async (obj, { id }) => {
+      const images = await models.image.findAll({
         where: { userId: obj.userId }
       });
+      return images.length === 0 ? null : images;
     }
   },
   Image: {

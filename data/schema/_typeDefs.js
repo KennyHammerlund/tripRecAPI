@@ -7,6 +7,18 @@ import { location } from "./location";
 import { trip } from "./trip";
 import { user } from "./user";
 import { userTrip } from "./userTrip";
-import { mutation } from './mutation';
-import { Login } from './login';
-export default [query, image, location, trip, user, userTrip, mutation, Login];
+import { mutation } from "./mutation";
+import { Login } from "./login";
+import { tripLocation } from "./tripLocation";
+
+export default [
+  query,
+  image,
+  location,
+  trip,
+  user,
+  userTrip,
+  mutation,
+  Login,
+  tripLocation
+];

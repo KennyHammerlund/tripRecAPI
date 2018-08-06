@@ -1,4 +1,5 @@
 import { models } from "../../data/model";
+import moment from "moment";
 export default {
   Query: {
     userTrip: (obj, { id }) => {
@@ -8,6 +9,11 @@ export default {
     }
   },
   UserTrip: {
-    id: (obj, args) => obj.userTripId
+    id: (obj, args) => obj.userTripId,
+    trip: (obj, args) =>
+      models.trip.findOne({
+        where: { tripId: obj.tripId }
+      }),
+    date: (obj, args) => moment(obj.date).format()
   }
 };

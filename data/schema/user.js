@@ -7,5 +7,5 @@ export const user = `type User {
   password: String
   profileImage: Image
   images: [Image]
-  trips: [Trip]
+  trips: [UserTrip]
 }`;

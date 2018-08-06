@@ -3,5 +3,6 @@ export const userTrip = `type UserTrip {
   comments: String
   trip: Trip
   user: User
+  date: String
   images: [Image]
 }`;

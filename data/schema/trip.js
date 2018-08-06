@@ -3,7 +3,7 @@ export const trip = `type Trip {
   title: String
   description: String
   stops: [Location]
-  comments: String
   date: String
   userTrips: [UserTrip]
+  createdBy: User
 }`;

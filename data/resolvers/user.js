@@ -9,19 +9,14 @@ export default {
   },
   User: {
     id: (obj, args, ctx) => {
-      console.log("context");
-      console.log(ctx);
-    return obj.userId;},
-    displayName: (obj, args, ctx) =>{
+      return obj.userId;
+    },
+    displayName: (obj, args, ctx) => {
       return JSON.stringify(ctx);
     },
-    trips: ({ userId }, args) => {
+    trips: (obj, args) => {
       return models.userTrip.findAll({
-        include: {
-          model: models.trip,
-          where: { userId: userId },
-          as: "userTrip"
-        }
+        where: { userId: obj.userId }
       });
     },
     profileImage: ({ userId }, args) => {

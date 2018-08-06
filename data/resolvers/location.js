@@ -9,29 +9,15 @@ export default {
   },
   Image: {
     location: (obj, { id }) => {
-      return models.tripLocation.findOne({
-        where: { tripLocationId: obj.tripLocationId },
-        include: {
-          model: models.location,
-          as: "tripLocation"
-        }
-      });
-    }
-  },
-  Trip: {
-    stops: (obj, { id }) => {
-      return models.tripLocation.findAll({
-        where: { userTripId: obj.userTripId },
-        include: {
-          model: models.location,
-          as: "tripLocation"
-        }
+      console.log(obj.locationId);
+      return models.location.findOne({
+        where: { locationId: obj.locationId }
       });
     }
   },
   Location: {
-    id: (obj, args) => obj.tripLocationId,
-    name: (obj, args) => obj.tripLocation.name,
+    id: (obj, args) => obj.locationId,
+    name: (obj, args) => obj.name,
     lat: (obj, args) => obj.lat,
     long: (obj, args) => obj.long,
     stockImage: (obj, args) => {
