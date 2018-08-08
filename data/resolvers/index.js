@@ -6,3 +6,4 @@ export { default as trip } from "./trip";
 export { default as userTrip } from "./userTrip";
 export { default as login } from "./login";
 export { default as viewer } from "./viewer";
+export { default as mutations } from "./mutations";
