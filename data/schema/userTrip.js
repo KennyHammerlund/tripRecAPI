@@ -4,5 +4,6 @@ export const userTrip = `type UserTrip {
   trip: Trip
   user: User
   date: String
+  isActive: Boolean
   images: [Image]
 }`;

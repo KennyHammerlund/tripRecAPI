@@ -28,7 +28,8 @@ export default {
             comment,
             tripId: row.tripId,
             userId,
-            date
+            date,
+            isActive: 1
           });
           return row.tripId;
         })
