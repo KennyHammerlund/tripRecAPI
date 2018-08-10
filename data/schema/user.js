@@ -8,4 +8,5 @@ export const user = `type User {
   profileImage: Image
   images: [Image]
   trips: [UserTrip]
+  currentTrips: [UserTrip]
 }`;

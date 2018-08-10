@@ -31,6 +31,12 @@ module.exports = (sequelize, DataTypes) => {
         key: "UserID"
       }
     },
+    isActive: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      field: "IsActive",
+      defaultValue: false
+    },
     date: {
       type: Sequelize.DATE,
       allowNull: false,

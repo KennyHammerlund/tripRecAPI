@@ -19,6 +19,14 @@ export default {
         where: { userId: obj.userId }
       });
     },
+    currentTrips: (obj, args) => {
+      return models.userTrip.findAll({
+        where: {
+          userId: obj.userId,
+          isActive: true
+        }
+      });
+    },
     profileImage: ({ userId }, args) => {
       return models.image.findOne({
         where: {

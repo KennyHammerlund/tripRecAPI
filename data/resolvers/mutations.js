@@ -2,9 +2,10 @@ import { models } from "../../data/model";
 import moment from "moment";
 
 export default {
-  
   Mutation: {
     CreateTrip: async (_, { title, description, userId, comment }) => {
+      if (title === "" || description === "" || comment === "") return false;
+
       const insert = models.trip
         .upsert({
           title,
@@ -31,7 +32,7 @@ export default {
           });
           return row.tripId;
         })
-        .then((id) => {
+        .then(id => {
           var userRow = models.userTrip.findOne({
             where: {
               comment,
@@ -40,13 +41,13 @@ export default {
             }
           });
           return userRow;
-        }).then(row =>{
-          if(row){
+        })
+        .then(row => {
+          if (row) {
             return true;
           }
           return false;
-        }
-        );
+        });
 
       return insert;
     }
