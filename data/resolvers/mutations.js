@@ -3,6 +3,54 @@ import moment from "moment";
 
 export default {
   Mutation: {
+    AddLocation: async (_, { name, description, lat, long }) => {
+      console.log(`${lat} - ${long}`);
+      const insert = await models.location
+        .upsert({
+          name,
+          description,
+          lat,
+          long
+        })
+        .then(async () => {
+          const row = await models.location.findOne({
+            where: {
+              name,
+              description,
+              lat: lat.toFixed(6),
+              long: long.toFixed(6)
+            }
+          });
+          console.log(row);
+          return row;
+        });
+      console.log(insert);
+      return insert ? insert.locationId : null;
+    },
+
+    CheckIn: async (_, { locationId, comments, userTripId }) => {
+      const date = moment.utc().format();
+      const insert = await models.tripLocation
+        .upsert({
+          locationId,
+          comments,
+          userTripId,
+          date
+        })
+        .then(() => {
+          const row = models.tripLocation.findOne({
+            where: {
+              locationId,
+              comments,
+              userTripId
+            }
+          });
+          return row;
+        })
+        .then(r => r.tripLocationId);
+
+      return insert;
+    },
     CreateTrip: async (_, { title, description, userId, comment }) => {
       if (title === "" || description === "" || comment === "") return false;
 
