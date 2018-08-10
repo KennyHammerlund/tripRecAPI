@@ -15,6 +15,10 @@ export default {
         where: { tripId: obj.tripId }
       }),
     date: (obj, args) => moment(obj.date).format(),
-    comments: (obj, args) => obj.comment
+    comments: (obj, args) => obj.comment,
+    user: obj =>
+      models.user.findOne({
+        where: { userId: obj.userId }
+      })
   }
 };
