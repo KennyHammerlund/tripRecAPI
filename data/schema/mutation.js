@@ -5,4 +5,5 @@ export const mutation = `type Mutation {
   CreateTrip(title: String!, description: String!, comment: String! userId: Int!): Boolean
   AddLocation(name: String!, description: String!, lat: Float!, long: Float!): Int
   CheckIn(locationId: Int!, comments: String!, userTripId: Int!): Int
+  EndTrip(tripId: Int, userTripId: Int): Boolean
  }`;

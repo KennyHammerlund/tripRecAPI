@@ -51,6 +51,19 @@ export default {
 
       return insert;
     },
+    EndTrip: (_, { userTripId }) => {
+      console.log(userTripId);
+      const insert = models.userTrip
+        .upsert({
+          userTripId,
+          isActive: 0
+        })
+        .then(() => {
+          return true;
+        });
+
+      return insert;
+    },
     CreateTrip: async (_, { title, description, userId, comment }) => {
       if (title === "" || description === "" || comment === "") return false;
 
