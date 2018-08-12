@@ -1,9 +1,18 @@
 import { models } from "../../data/model";
+import Sequelize from "sequelize";
+
 export default {
   Query: {
-    location: (obj, { id }) => {
-      return models.location.findOne({
+    location: (obj, { id, lat, long }) =>
+      models.location.findOne({
         where: { locationId: id }
+      }),
+    findNearbyLocations: (obj, { lat, long }) => {
+      return models.location.findAll({
+        where: {
+          lat: { [Sequelize.Op.between]: [lat - 0.0001, lat + 0.001] },
+          long: { [Sequelize.Op.between]: [long - 0.0001, long + 0.001] }
+        }
       });
     }
   },
