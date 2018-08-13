@@ -22,7 +22,12 @@ export default {
     }
   },
   Trip: {
-    id: (obj, args) => obj.tripId,
+    id: (obj, args) => {
+      console.log("------PROPS------");
+      console.log(obj.tripId);
+      console.log(obj);
+      return obj.tripId;
+    },
     title: (obj, args) => obj.title,
     date: (obj, args) => moment(obj.date).format(),
     createdBy: ({ userId }, args) =>
@@ -40,12 +45,11 @@ export default {
         where: { tripId: tripId },
         include: [
           {
-            model: models.location,
-            as: "Order_Location"
-          },
-          {
             model: models.trip,
-            as: "Order_Trip"
+            as: "Order_Trip",
+            through: {
+              where: { tblTripTripId: tripId }
+            }
           }
         ]
       });

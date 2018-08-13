@@ -49,10 +49,11 @@ export default {
     }
   },
   Stop: {
-    id: (obj, args) => obj.userTripLocation.id,
-    name: (obj, args) => {
-      return obj.userTripLocation[0].tripLocation.name || null;
-    },
+    id: (obj, args) => obj.tripLocationOrderId,
+    location: ({ locationId }) =>
+      models.location.findOne({
+        where: { locationId: locationId }
+      }),
     stockImage: (obj, args) => {
       return models.image.findOne({
         where: {
@@ -66,14 +67,6 @@ export default {
         where: {
           locationId: obj.userTripLocation[0].tripLocation.locationId
         }
-      });
-    },
-    comment: (obj, args) => {
-      return obj.comment;
-    },
-    userTrip: (obj, args) => {
-      return models.userTrip.findOne({
-        where: { userTripId: obj.userTripId }
       });
     }
   }

@@ -1,8 +1,7 @@
 export const stop = `type Stop {
   id: Int
-  name: String
-  lat: Float
-  long: Float
+  order: Int
+  location: Location
   stockImage: Image
   userImages: [Image]
   comment: String
