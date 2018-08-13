@@ -5,20 +5,24 @@ export default {
   Mutation: {
     AddLocation: async (_, { name, description, lat, long }) => {
       console.log(`${lat} - ${long}`);
+      console.log(name);
+      console.log(description);
+      const newLat = lat.toFixed(6);
+      const newLong = long.toFixed(6);
       const insert = await models.location
         .upsert({
           name,
           description,
-          lat,
-          long
+          lat: newLat,
+          long: newLong
         })
         .then(async () => {
           const row = await models.location.findOne({
             where: {
               name,
               description,
-              lat: lat.toFixed(6),
-              long: long.toFixed(6)
+              lat: newLat,
+              long: newLong
             }
           });
           console.log(row);
