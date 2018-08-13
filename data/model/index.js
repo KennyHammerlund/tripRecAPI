@@ -37,9 +37,21 @@ models.userTrip.hasMany(models.tripLocation, {
   as: "userTripLocation",
   foreignKey: "userTripId"
 });
-models.tripLocationOrder.hasMany(models.tripLocation, {
-  as: "tripLocationOrderTrips",
-  foreignKey: "tripId"
+models.location.belongsToMany(models.tripLocationOrder, {
+  as: "Location_Order",
+  through: "locationToOrder"
+});
+models.tripLocationOrder.belongsToMany(models.location, {
+  as: "Order_Location",
+  through: "locationToOrder"
+});
+models.trip.belongsToMany(models.tripLocationOrder, {
+  as: "Trip_Order",
+  through: "tripToOrder"
+});
+models.tripLocationOrder.belongsToMany(models.trip, {
+  as: "Order_Trip",
+  through: "tripToOrder"
 });
 
 db.sequelize = sequelize;

@@ -38,10 +38,16 @@ export default {
     stops: ({ tripId }, args) => {
       return models.tripLocationOrder.findAll({
         where: { tripId: tripId },
-        include: {
-          model: models.location,
-          as: "tripLocationOrderTrips"
-        }
+        include: [
+          {
+            model: models.location,
+            as: "Order_Location"
+          },
+          {
+            model: models.trip,
+            as: "Order_Trip"
+          }
+        ]
       });
     }
   }

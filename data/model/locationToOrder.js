@@ -1,13 +1,13 @@
 import Sequelize from "sequelize";
 
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("tblTripLocationOrder", {
-    tripLocationOrderId: {
+  return sequelize.define("tblLocationToOrder", {
+    locationToOrderId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      field: "TripLocationOrderID"
+      field: "LocationToOrderID"
     },
     locationId: {
       type: Sequelize.INTEGER,
@@ -18,19 +18,14 @@ module.exports = (sequelize, DataTypes) => {
         key: "LocationID"
       }
     },
-    tripId: {
+    tripLocationOrderId: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      field: "TripID",
+      field: "TripLocationOrderID",
       references: {
-        model: "tblTrips",
-        key: "TripID"
+        model: "tblTripLocationOrders",
+        key: "TripLocationOrderID"
       }
-    },
-    order: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      field: "Order"
     }
   });
 };
