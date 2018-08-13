@@ -27,7 +27,7 @@ export default {
   Location: {
     id: (obj, args) => {
       console.log(obj);
-      return obj.tripLocationId;
+      return obj.locationId;
     },
     name: (obj, args) => obj.name,
     lat: (obj, args) => obj.lat,
