@@ -37,6 +37,10 @@ models.userTrip.hasMany(models.tripLocation, {
   as: "userTripLocation",
   foreignKey: "userTripId"
 });
+models.tripLocationOrder.hasMany(models.tripLocation, {
+  as: "tripLocationOrderTrips",
+  foreignKey: "tripId"
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

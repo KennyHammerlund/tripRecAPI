@@ -46,7 +46,9 @@ graphQLServer.use(
   }))
 );
 
-//***USE THIS TO CREATE MOCK DATA ****/
+/***USE THIS TO CREATE MOCK DATA
+ ** Or to add new models
+ */
 // populate(db);
 
 // db.sequelize.sync().then(() => {

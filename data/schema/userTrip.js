@@ -6,4 +6,5 @@ export const userTrip = `type UserTrip {
   date: String
   isActive: Boolean
   images: [Image]
+  stops: [TripLocation]
 }`;

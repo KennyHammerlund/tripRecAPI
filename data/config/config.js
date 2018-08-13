@@ -12,7 +12,7 @@ const isDebug = (() => {
 })();
 
 const logging = query => {
-  if (isDebug) {
+  if (!isDebug) {
     const tables = query.match(/tbl\w+/g);
     console.groupCollapsed(`QUERY::${tables ? tables[0] : "Query"}`); // eslint-disable-line no-console
     console.log(sqlFormatter.format(query)); // eslint-disable-line no-console

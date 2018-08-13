@@ -36,16 +36,11 @@ export default {
       return trips.length === 0 ? null : trips;
     },
     stops: ({ tripId }, args) => {
-      return models.userTrip.findAll({
+      return models.tripLocationOrder.findAll({
         where: { tripId: tripId },
         include: {
-          model: models.tripLocation,
-          as: "userTripLocation",
-          required: true,
-          include: {
-            model: models.location,
-            as: "tripLocation"
-          }
+          model: models.location,
+          as: "tripLocationOrderTrips"
         }
       });
     }

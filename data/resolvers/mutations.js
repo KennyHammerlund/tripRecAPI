@@ -28,28 +28,38 @@ export default {
       return insert ? insert.locationId : null;
     },
 
-    CheckIn: async (_, { locationId, comments, userTripId }) => {
+    CheckIn: async (
+      _,
+      { locationId, comments, userTripId, newTrip, tripId }
+    ) => {
       const date = moment.utc().format();
-      const insert = await models.tripLocation
-        .upsert({
+      if (newTrip) {
+        let maxVal = await models.tripLocationOrder.max("order", {
+          where: { tripId: tripId }
+        });
+        maxVal = isNaN(maxVal) ? 0 : maxVal;
+
+        const tripOrder = await models.tripLocationOrder.upsert({
+          locationId,
+          tripId: tripId,
+          order: maxVal + 1
+        });
+        const insert = await models.tripLocation.upsert({
           locationId,
           comments,
           userTripId,
           date
-        })
-        .then(() => {
-          const row = models.tripLocation.findOne({
-            where: {
-              locationId,
-              comments,
-              userTripId
-            }
-          });
-          return row;
-        })
-        .then(r => r.tripLocationId);
-
-      return insert;
+        });
+        return tripOrder && insert;
+      } else {
+        const insert = await models.tripLocation.upsert({
+          locationId,
+          comments,
+          userTripId,
+          date
+        });
+        return insert;
+      }
     },
     EndTrip: (_, { userTripId }) => {
       console.log(userTripId);
