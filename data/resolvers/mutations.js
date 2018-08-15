@@ -37,12 +37,11 @@ export default {
       { locationId, comments, userTripId, newTrip, tripId }
     ) => {
       const date = moment.utc().format();
+      let maxVal = await models.tripLocationOrder.max("order", {
+        where: { tripId: tripId }
+      });
+      maxVal = isNaN(maxVal) ? 0 : maxVal;
       if (newTrip) {
-        let maxVal = await models.tripLocationOrder.max("order", {
-          where: { tripId: tripId }
-        });
-        maxVal = isNaN(maxVal) ? 0 : maxVal;
-
         const tripOrder = await models.tripLocationOrder.upsert({
           locationId,
           tripId: tripId,
@@ -62,7 +61,28 @@ export default {
           userTripId,
           date
         });
-        return insert;
+
+        const checkOrder = await models.tripLocationOrder
+          .findOne({
+            where: {
+              tripId,
+              locationId
+            }
+          })
+          .then(r => {
+            if (r) {
+              console.log("record found");
+              return true;
+            }
+            const insertOrder = models.tripLocationOrder.upsert({
+              locationId,
+              tripId,
+              order: maxVal + 1
+            });
+            return insertOrder;
+          });
+
+        return insert && checkOrder;
       }
     },
     EndTrip: (_, { userTripId }) => {
